@@ -9,7 +9,7 @@ for a in /dev/block/platform/soc/c0c4000.sdhci/by-name/*_a; do
         part_a=$(readlink -fn $a);
         part_b=$(readlink -fn $b);
         if [[ -n "$part_a" && -n "$part_b" && "$a" != "$part_a" && "$b" != "$part_b" ]]; then
-          dd if=$part_a of=$part_b
+          echo "dd if=$part_a of=$part_b"
         fi  
     fi
 done
