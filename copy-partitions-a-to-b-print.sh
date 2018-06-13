@@ -12,7 +12,7 @@ fi
 
 for active in /dev/block/bootdevice/by-name/*$suffix_active; do
   partition=$(basename $active)
-    if [[ "$IGNORED" != *" $partition "* ]]; then
+    if [[ "${IGNORED/$partition}" = "$IGNORED" ]]; then
         echo "Partition $partition"
         inactive=$(echo $active | sed "s/${suffix_active}\$/${suffix_swap}/");
         part_active=$(readlink -fn $active);
